@@ -1,0 +1,27 @@
+{
+  "name": "telegram_bot_sample",
+  "version": "1.0.0",
+  "description": "A Telegram Bot Sample",
+  "main": "app.js",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node app.js",
+    "lint": "./node_modules/.bin/eslint .",
+    "dev": "npx nodemon"
+  },
+  "keywords": [
+    "tutorial"
+  ],
+  "author": "adrian gesto",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "node-telegram-bot-api": "^0.53.0"
+  }
+}
