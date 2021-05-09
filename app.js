@@ -9,7 +9,7 @@ import formidable from 'formidable';
 
 const Bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-const PORT = process.env.PORT || 3000;
+const SERVER_PORT = process.env.PORT || '3000';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 Bot.on('polling_error', (err) => console.error(err));
@@ -83,10 +83,10 @@ app.post('/pic', async (req, res, next) => {
 
 });
 
-app.set('port', PORT);
+app.set('port', SERVER_PORT);
 
 const server = http.createServer(app);
-server.listen(PORT);
+server.listen(SERVER_PORT);
 server.on('error', (error) => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -94,11 +94,11 @@ server.on('error', (error) => {
 
   switch (error.code) {
     case 'EACCES':
-      console.error(`${PORT} requires elevated privileges`);
+      console.error(`${SERVER_PORT} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(`${PORT} is already in use`);
+      console.error(`${SERVER_PORT} is already in use`);
       process.exit(1);
       break;
     default:
@@ -107,5 +107,5 @@ server.on('error', (error) => {
 });
 
 server.on('listening', () => {
-  console.info(`Listening on ${PORT}`);
+  console.info(`Listening on ${SERVER_PORT}`);
 });
